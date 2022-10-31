@@ -2,9 +2,6 @@ import os
 
 
 class Config(object):
-    # Подключается БД SQLite
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI')
-    # Задаётся конкретное значение для конфигурационного ключа
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', default='sqlite:///db.sqlite3')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # Вместо MY SECRET KEY придумайте и впишите свой ключ
-    SECRET_KEY = os.getenv('SECRET_KEY')
+    SECRET_KEY = os.getenv('SECRET_KEY', default='qwerty12345')
