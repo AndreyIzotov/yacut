@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template
+from flask import flash, redirect, render_template, url_for
 
 from . import app, db
 from .forms import URL_mapForm
@@ -23,7 +23,7 @@ def index_view():
     )
     db.session.add(new_url)
     db.session.commit()
-    flash(f'{custom_id}')
+    flash(url_for('index_view', _external=True) + new_url.short)
     return render_template('main.html', url=new_url, form=form)
 
 

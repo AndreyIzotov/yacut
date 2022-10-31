@@ -37,6 +37,6 @@ def create_short_link():
 def get_original_url(short_id):
     db_object = get_db_object(URL_map.short, short_id).first()
     if not db_object:
-        raise InvalidAPIUsage('Указанный id не найден')
+        raise InvalidAPIUsage('Указанный id не найден', 404)
     original_url = db_object.original
     return jsonify({'url': original_url}), 200
